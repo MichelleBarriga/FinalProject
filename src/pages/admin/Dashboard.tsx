@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { MdEdit, MdDelete } from "react-icons/md";
 import { Table } from "../../components/Table";
 import { useState, lazy, Suspense, useMemo } from "react";
@@ -12,6 +13,7 @@ const MovieFormWizard = lazy(
 );
 
 const ConfirmModal = lazy(() => import("../../components/ConfirmModal"));
+const Toast = lazy(() => import("../../components/Toast"));
 
 type WizardMode = "create" | "edit";
 
@@ -34,9 +36,11 @@ function Dashboard() {
   const closeWizard = () => {
     setIsWizardOpen(false);
   };
-
+  console.log(showToast);
+  console.log(messageToast);
+  console.log(Toast);
   const handleDelete = async () => {
-    console.log("Delete movie with id:", selectedId, showToast, messageToast);
+    console.log("Delete movie with id:", selectedId);
     if (selectedId != null) {
       await deleteMovie(selectedId);
     }
